@@ -6,7 +6,7 @@ This project has following components
   - support three peer to peer discovery
     - three server profiles included
     - each server runs with -Dspring.profiles.active=**peer1** or **peer2** or **peer3**
-    - port range is 8800-8802
+    - port range is 8800-8802, each server contains own status dashboard
 - eureka-client (simple backend-client)
   - three client-service profiles included
   - each server runs with -Dspring.profiles.active=**peer1** or **peer2** or **peer3**

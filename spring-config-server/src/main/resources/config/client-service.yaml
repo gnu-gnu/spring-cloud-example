@@ -1,6 +1,6 @@
 spring:
   application:
-    name: client-service
+    name: client-service #name should be equal to bootstrap's one
 eureka:
   client:
     service-url:

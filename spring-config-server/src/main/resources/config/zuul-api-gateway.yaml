@@ -1,6 +1,6 @@
 spring:
   application:
-    name: zuul-api-gateway
+    name: zuul-api-gateway #name should be equal to bootstrap's one
 server:
   port: ${port:8888}
 zuul:

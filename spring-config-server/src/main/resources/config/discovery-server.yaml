@@ -1,15 +1,12 @@
-#yaml is able to contain multiple configurations in single file separated with '---'
 spring:
   application:
-    name: discovery-server
+    name: discovery-server #name should be equal to bootstrap's one
 eureka:
-#  server:
-#    eviction-interval-timer-in-ms: 5000
   client:
     service-url:
       defaultZone: http://localhost:8800/eureka/, http://localhost:8801/eureka/, http://localhost:8802/eureka/
   instance:
-    prefer-ip-address: true
+    prefer-ip-address: true # if you don't have own your DNS servers, perfer-ip-address is useful.
     instance-id: ${spring.application.name}-${spring.profiles.active}    
 ---
 spring:
@@ -38,6 +35,3 @@ eureka:
   instance:
     metadata-map:
       zone: zone3
-#Eureka server includes eureka-client. running with stand-alone server needs to deactivate client configurations. but peer-to-peer server doesn't.
-#eureka.client.register-with-eureka=false
-#eureka.client.fetch-registry=false
