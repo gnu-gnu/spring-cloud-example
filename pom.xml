@@ -10,6 +10,7 @@
 		<module>eureka-server</module>
 		<module>eureka-client</module>
 		<module>zuul-gateway</module>
+		<module>spring-config-server</module>
 	</modules>
 	<parent>
 		<groupId>org.springframework.boot</groupId>
