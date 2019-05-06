@@ -14,11 +14,20 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
  * @see https://cloud.spring.io/spring-cloud-netflix/multi/multi__service_discovery_eureka_clients.html
  *
  */
+import org.springframework.cloud.client.loadbalancer.LoadBalanced;
+import org.springframework.context.annotation.Bean;
+import org.springframework.web.client.RestTemplate;
 @SpringBootApplication
 public class EurekaClient1Application {
 
 	public static void main(String[] args) {
 		SpringApplication.run(EurekaClient1Application.class, args);
+	}
+	
+	@LoadBalanced
+	@Bean
+	public RestTemplate restTemplate() {
+		return new RestTemplate();
 	}
 
 }
