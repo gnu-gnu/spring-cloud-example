@@ -13,6 +13,7 @@ Example for Spring cloud (netflix OSS, spring cloud)
 - zuul-gateway (API Gateway)
   - 포트는 8888 입니다.
   - http://localhost:8888/api/client/ping 로 요청을 전송하면 로드밸런싱이 적용된 eureka-client 백엔드 호출 응답을 보여줍니다.
+  - POST http://localhost:8888/actuator/refresh 을 통해 원격의 설정을 갱신할 수 있습니다.
 - spring-config-server (파일 기반 원격 컨피그 서버)
   - **/src/main/resources/config** 디렉토리 안에 위의 모든 서비스에 대한 config 파일이 위치합니다.
   - 파일 기반 구동을 위해 **-Dspring.profiles.active=native** VM args 로 실행하여야 합니다.
