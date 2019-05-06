@@ -6,12 +6,12 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.client.RestTemplate;
 @RestController
 public class ClientController {
-	@Value("${spring.profiles}")
 	private String zone;
-	
 	private RestTemplate restTemplate;
+	private final String CLIENT_SERVICE_2 = "client-service-2";
 	
-	public ClientController(RestTemplate restTemplate) {
+	public ClientController(RestTemplate restTemplate, @Value("${spring.profiles}") String zone) {
+		this.zone = zone;
 		this.restTemplate = restTemplate;
 	}
 
@@ -26,6 +26,6 @@ public class ClientController {
 	
 	@GetMapping("/greets")
 	public String greets() {
-		return restTemplate.getForObject("http://client-service-2/greeting", String.class);
+		return restTemplate.getForObject("http://"+CLIENT_SERVICE_2+"/greeting", String.class);
 	}
 }

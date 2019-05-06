@@ -15,6 +15,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
  *
  */
 import org.springframework.cloud.client.loadbalancer.LoadBalanced;
+import org.springframework.cloud.client.loadbalancer.LoadBalancerClient;
 import org.springframework.context.annotation.Bean;
 import org.springframework.web.client.RestTemplate;
 @SpringBootApplication
@@ -24,8 +25,17 @@ public class EurekaClient1Application {
 		SpringApplication.run(EurekaClient1Application.class, args);
 	}
 	
-	@LoadBalanced
+	
+	/**
+	 * 
+	 * RestTeamplate Bean configured to use LoadBalancerClient
+	 * 
+	 * @return RestTemplate Bean
+	 * @see LoadBalancerClient
+	 * @see RibbonLoadBalancerClient
+	 */
 	@Bean
+	@LoadBalanced
 	public RestTemplate restTemplate() {
 		return new RestTemplate();
 	}
