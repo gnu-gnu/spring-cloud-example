@@ -10,6 +10,12 @@ Example for Spring cloud (netflix OSS, spring cloud)
   - 3개의 eureka-client 서비스
   - 각 서버는 -Dspring.profiles.active=**peer1** or **peer2** or **peer3** 옵션을 통해 구동하여야 합니다.
   - 사용하는 포트는 8811-8813 입니다.
+  - 구성 정보에 대해서 config-first-bootstrap 으로 구현되어 있습니다.
+- eureka-client-2 (간단한 백엔드)
+  - 3개의 eureka-client 서비스
+  - 각 서버는 -Dspring.profiles.active=**peer1** or **peer2** or **peer3** 옵션을 통해 구동하여야 합니다.
+  - 사용하는 포트는 8821-8823 입니다.  
+  - 구성 정보에 대해서 discovery-first-bootstrap 으로 구현되어 있습니다.
 - zuul-gateway (API Gateway)
   - 포트는 8888 입니다.
   - http://localhost:8888/api/client/ping 로 요청을 전송하면 로드밸런싱이 적용된 eureka-client 백엔드 호출 응답을 보여줍니다.
