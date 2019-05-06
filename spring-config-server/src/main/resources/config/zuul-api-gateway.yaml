@@ -13,3 +13,13 @@ eureka:
   client:
     service-url:
       defaultZone: http://localhost:8800/eureka/, http://localhost:8801/eureka/, http://localhost:8802/eureka/
+# Actuator exposes minimal endpoints as default (/info, /health)
+# it makes rest of endpoints be exposed via web 
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+custom:
+  data:
+    value: Hello~
