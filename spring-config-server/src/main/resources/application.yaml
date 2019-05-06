@@ -1,2 +1,13 @@
+spring:
+  application:
+    name: config-server
 server:
-  port: 9000          
+  port: 9000
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:8800/eureka/, http://localhost:8801/eureka/, http://localhost:8802/eureka/
+  instance:
+    prefer-ip-address: true # if you don't have own your DNS servers, perfer-ip-address is useful.
+    instance-id: ${spring.application.name}
+    

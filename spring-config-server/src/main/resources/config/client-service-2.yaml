@@ -1,7 +1,10 @@
 spring:
   application:
-    name: client-service #name should be equal to bootstrap's one
+    name: client-service-2 #name should be equal to bootstrap's one
 eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:8800/eureka/,http://localhost:8801/eureka/,http://localhost:8802/eureka/    
   instance:
     prefer-ip-address: true
     instance-id: ${spring.application.name}-${spring.profiles.active}    
@@ -13,7 +16,7 @@ eureka:
     metadata-map:
       zone: zone1
 server:
-  port: ${port:8811}
+  port: ${port:8821}
 ---
 spring:
   profiles: peer2
@@ -22,7 +25,7 @@ eureka:
     metadata-map:
       zone: zone2
 server:
-  port: ${port:8812}
+  port: ${port:8822}
 ---
 spring:
   profiles: peer3
@@ -31,4 +34,4 @@ eureka:
     metadata-map:
       zone: zone3
 server:
-  port: ${port:8813}
+  port: ${port:8823}

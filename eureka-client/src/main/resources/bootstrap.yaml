@@ -1,9 +1,14 @@
-# to fetch configurations from the remote config server, application.yaml is replaced by bootstrap.yaml
-# bootstrap tries to get configurations from remote server matches with spring.application.name.
+# client-service implements discovery-first-bootstrap
+# it registers itself to eureka discovery and find configuration server among eureka instances
 spring:
   application:
     name: client-service
   cloud:
     config:
-      uri:
-      - http://localhost:9000/
+      discovery:
+        enabled: true
+        service-id: config-server
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:8800/eureka/,http://localhost:8801/eureka/,http://localhost:8802/eureka/      
