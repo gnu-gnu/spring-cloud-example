@@ -4,7 +4,12 @@ spring:
 eureka:
   instance:
     prefer-ip-address: true
-    instance-id: ${spring.application.name}-${spring.profiles.active}    
+    instance-id: ${spring.application.name}-${spring.profiles.active}
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"    
 ---
 spring:
   profiles: peer1

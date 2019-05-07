@@ -18,6 +18,7 @@ public class TestController {
 	@Value("${custom.data.value}") 
 	private String value;
 	
+	
 	@RequestMapping("/get")
 	public String get() {
 		return value;

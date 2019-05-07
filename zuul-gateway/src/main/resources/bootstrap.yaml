@@ -9,4 +9,10 @@ spring:
 eureka:
   client:
     service-url:
-      defaultZone: http://localhost:8800/eureka/, http://localhost:8801/eureka/, http://localhost:8802/eureka/      
+      defaultZone: http://localhost:8800/eureka/, http://localhost:8801/eureka/, http://localhost:8802/eureka/
+# turbine provide integrated hystrix monitor
+# each instance in app-config should have @EnableHystrix
+# turbine gather information from /hystrix.stream
+turbine:
+  app-config: client-service, client-service-2
+  cluster-name-expression: "'default'"
