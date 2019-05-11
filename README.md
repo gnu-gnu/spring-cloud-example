@@ -5,7 +5,7 @@ Example for Spring cloud (netflix OSS, spring cloud)
   - eureka-server (디스커버리 서비스)
     - 3개의 peer-to-peer 디스커버리 서버
     - 각 서버는 -Dspring.profiles.active=**peer1** or **peer2** or **peer3** 옵션을 통해 구동하여야 합니다.
-    - 사용하는 포트는 8800-8802 입니다. 각 서버는 상태를 확할 수 있는 대시보드를 포함합니다.
+    - 사용하는 포트는 8800-8802 입니다. 각 서버는 상태를 확인할 수 있는 대시보드를 포함합니다.
 - eureka-client (간단한 백엔드)
   - 3개의 eureka-client 서비스
   - 각 서버는 -Dspring.profiles.active=**peer1** or **peer2** or **peer3** 옵션을 통해 구동하여야 합니다.
