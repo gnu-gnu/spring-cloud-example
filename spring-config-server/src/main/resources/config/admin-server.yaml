@@ -1,0 +1,17 @@
+spring:
+  application:
+    name: admin-server #name should be equal to bootstrap's one
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:8800/eureka/,http://localhost:8801/eureka/,http://localhost:8802/eureka/    
+  instance:
+    prefer-ip-address: true
+    instance-id: ${spring.application.name}
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"    
+server:
+  port: ${port:9900}

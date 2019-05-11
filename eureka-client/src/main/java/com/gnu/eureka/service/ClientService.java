@@ -5,6 +5,7 @@ import org.springframework.web.client.RestTemplate;
 
 import com.netflix.hystrix.contrib.javanica.annotation.HystrixCommand;
 import com.netflix.hystrix.contrib.javanica.annotation.HystrixProperty;
+import com.netflix.ribbon.proxy.annotation.Hystrix;
 
 @Service
 public class ClientService {
@@ -31,7 +32,12 @@ public class ClientService {
 					// if at least, five request sent and more 20% fails, stop for 10000ms (circuit open, it means that automatically triggers fallback for 10seconds)
 					@HystrixProperty(name="circuitBreaker.sleepWindowInMilliseconds",value="5"),
 					@HystrixProperty(name="circuitBreaker.errorThresholdPercentage",value="20"),
-					@HystrixProperty(name="circuitBreaker.sleepWindowInMilliseconds", value="10000")
+					@HystrixProperty(name="circuitBreaker.sleepWindowInMilliseconds", value="10000"),
+					/*
+					 * THREAD - executes on separate thread, limited by thread pool
+					 * SEMAPHORE - executes on calling thread, limited by calling semaphore count 
+					 */
+					@HystrixProperty(name="execution.isolation.strategy", value="THREAD")
 			}
 			)
 	public String userList() {

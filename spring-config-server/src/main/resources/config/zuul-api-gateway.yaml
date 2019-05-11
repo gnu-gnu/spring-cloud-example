@@ -20,6 +20,12 @@ management:
     web:
       exposure:
         include: "*"
+# turbine provide integrated hystrix monitor
+# each instance in app-config should have @EnableHystrix
+# turbine gather information from /hystrix.stream
+turbine:
+  app-config: client-service, client-service-2
+  cluster-name-expression: "'default'"        
 custom:
   data:
     value: Hello~
