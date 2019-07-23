@@ -12,8 +12,10 @@ public class ClientService {
 	
 	private RestTemplate restTemplate;
 	private final String CLIENT_SERVICE_2 = "client-service-2";
-	public ClientService(RestTemplate restTemplate) {
+	private final FeignClientService feignClient;
+	public ClientService(RestTemplate restTemplate, FeignClientService feignClient) {
 		this.restTemplate = restTemplate;
+		this.feignClient = feignClient;
 	}
 	/**
 	 * 
@@ -43,6 +45,11 @@ public class ClientService {
 	public String userList() {
 		return restTemplate.getForObject("http://" + CLIENT_SERVICE_2 + "/userList", String.class);
 	}
+	
+	public String userListByFeign() {
+		return feignClient.userList();
+	}
+	
 	/**
 	 * 
 	 * fallback method for userList()

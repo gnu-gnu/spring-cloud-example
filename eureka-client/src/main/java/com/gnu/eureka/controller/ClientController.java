@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.client.RestTemplate;
 
 import com.gnu.eureka.service.ClientService;
+import com.gnu.eureka.service.FeignClientService;
 @RestController
 public class ClientController {
 	
@@ -17,11 +18,13 @@ public class ClientController {
 	private RestTemplate restTemplate;
 	private final String CLIENT_SERVICE_2 = "client-service-2";
 	private ClientService clientService;
+	private final FeignClientService feignClient;
 	
-	public ClientController(ClientService clientService, RestTemplate restTemplate, @Value("${spring.profiles}") String zone) {
+	public ClientController(ClientService clientService, RestTemplate restTemplate, @Value("${spring.profiles}") String zone, FeignClientService feignClient) {
 		this.clientService = clientService;
 		this.zone = zone;
 		this.restTemplate = restTemplate;
+		this.feignClient = feignClient;
 	}
 
 	/**
@@ -44,5 +47,11 @@ public class ClientController {
 	public String userList() {
 		LOG.info(zone);
 		return clientService.userList();
-	}	
+	}
+	
+	@GetMapping("/userListByFeign")
+	public String userListByFeign() {
+		LOG.info(zone);
+		return feignClient.userList();
+	}
 }
